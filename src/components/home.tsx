@@ -5,20 +5,29 @@ import { Upload, AlertCircle } from "lucide-react";
 import { useToast } from "./ui/use-toast";
 import { Alert, AlertDescription } from "./ui/alert";
 
-interface HomeProps {
-  score?: number;
-  recommendations?: Array<{
-    id: string;
-    title: string;
-    description: string;
-  }>;
+interface Recommendation {
+  id: string;
+  title: string;
+  description: string;
+}
+
+interface AnalysisResponse {
+  videoUrl: string;
+  score: number;
+  recommendations: Recommendation[];
 }
 
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
-const Home: React.FC<HomeProps> = ({
-  score = 75,
-  recommendations = [
+const Home: React.FC = () => {
+  const { toast } = useToast();
+  const [videoUrl, setVideoUrl] = useState<string>(
+    "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  );
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string>("");
+  const [score, setScore] = useState<number>(75);
+  const [recommendations, setRecommendations] = useState<Recommendation[]>([
     {
       id: "1",
       title: "Improve Follow Through",
@@ -37,14 +46,7 @@ const Home: React.FC<HomeProps> = ({
       description:
         "Increase hip rotation during the shot to generate more power in your kicks.",
     },
-  ],
-}) => {
-  const { toast } = useToast();
-  const [videoUrl, setVideoUrl] = useState<string>(
-    "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-  );
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string>("");
+  ]);
 
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -69,14 +71,35 @@ const Home: React.FC<HomeProps> = ({
 
     try {
       setIsLoading(true);
-      const videoUrl = URL.createObjectURL(file);
-      setVideoUrl(videoUrl);
+
+      // Create form data
+      const formData = new FormData();
+      formData.append("video", file);
+
+      // Send to backend API
+      const response = await fetch("https://api.example.com/analyze-shot", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to analyze video");
+      }
+
+      // Get analysis results
+      const analysis: AnalysisResponse = await response.json();
+
+      // Update UI with analysis results
+      setVideoUrl(analysis.videoUrl);
+      setScore(analysis.score);
+      setRecommendations(analysis.recommendations);
+
       toast({
-        title: "Video uploaded successfully",
-        description: file.name,
+        title: "Analysis complete",
+        description: "Your shot has been analyzed successfully.",
       });
     } catch (err) {
-      setError("Failed to load video. Please try again.");
+      setError("Failed to analyze video. Please try again.");
     } finally {
       setIsLoading(false);
     }
