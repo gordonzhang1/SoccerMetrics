@@ -2,6 +2,8 @@ import pandas as pd
 import cv2
 import os
 import numpy as np
+from getScore import getScore
+
 def getFrame(pose_path, ball_path, rightFoot, video_path):
     pp = pd.read_csv(pose_path)
     bp = pd.read_csv(ball_path)
@@ -76,34 +78,54 @@ def getAngles(video_path, frame, rightFoot):
     LEFT_SHOULDER, RIGHT_SHOULDER = 11, 12
     LEFT_ELBOW, LEFT_WRIST = 13, 15
     RIGHT_ELBOW, RIGHT_WRIST = 14, 16
-    
-    
+
     if rightFoot:
         kickingHip, kickingKnee, kickingAnkle, kickingToe = RIGHT_HIP, RIGHT_KNEE, RIGHT_ANKLE, RIGHT_TOE
         plantHip, plantKnee, plantAnkle, plantToe = LEFT_HIP, LEFT_KNEE, LEFT_ANKLE, LEFT_TOE
-        
         elbow, wrist = RIGHT_ELBOW, RIGHT_WRIST
     else:
         kickingHip, kickingKnee, kickingAnkle, kickingToe = LEFT_HIP, LEFT_KNEE, LEFT_ANKLE, LEFT_TOE
         plantHip, plantKnee, plantAnkle, plantToe = RIGHT_HIP, RIGHT_KNEE, RIGHT_ANKLE, RIGHT_TOE
-        
         elbow, wrist = LEFT_ELBOW, LEFT_WRIST
-    def get_xy(landmark_id):
-        return (
-            df.iloc[frame][lx(landmark_id)],
-            df.iloc[frame][ly(landmark_id)]
-        )
+
+    def lx(n): return f"landmark_{n}_x"
+    def ly(n): return f"landmark_{n}_y"
+
+    def get_xy(n): return (df.iloc[frame][lx(n)], df.iloc[frame][ly(n)])
 
     
     hip_kx, hip_ky = get_xy(kickingHip)
     knee_kx, knee_ky = get_xy(kickingKnee)
     ankle_kx, ankle_ky = get_xy(kickingAnkle)
     toe_kx, toe_ky = get_xy(kickingToe)
-
     knee_angle = calculate_angle(hip_kx, hip_ky, knee_kx, knee_ky, ankle_kx, ankle_ky)
     ankle_angle = calculate_angle(knee_kx, knee_ky, ankle_kx, ankle_ky, toe_kx, toe_ky)
-    print(knee_angle, ankle_angle, 'angles')
+
     
+    hip_px, hip_py = get_xy(plantHip)
+    knee_px, knee_py = get_xy(plantKnee)
+    ankle_px, ankle_py = get_xy(plantAnkle)
+    toe_px, toe_py = get_xy(plantToe)
+    plant_knee_angle = calculate_angle(hip_px, hip_py, knee_px, knee_py, ankle_px, ankle_py)
+    plant_ankle_angle = calculate_angle(knee_px, knee_py, ankle_px, ankle_py, toe_px, toe_py)
+
+
+    lshoulder_x, lshoulder_y = get_xy(LEFT_SHOULDER)
+    rshoulder_x, rshoulder_y = get_xy(RIGHT_SHOULDER)
+    lhip_x, lhip_y = get_xy(LEFT_HIP)
+    rhip_x, rhip_y = get_xy(RIGHT_HIP)
+    mid_shoulder_x = (lshoulder_x + rshoulder_x) / 2
+    mid_shoulder_y = (lshoulder_y + rshoulder_y) / 2
+    mid_hip_x = (lhip_x + rhip_x) / 2
+    mid_hip_y = (lhip_y + rhip_y) / 2
+    body_straight_angle = calculate_angle(mid_hip_x, mid_hip_y + 1, mid_hip_x, mid_hip_y, mid_shoulder_x, mid_shoulder_y)
+
+
+    print(knee_angle, ankle_angle, "angles")
+    print(plant_knee_angle, plant_ankle_angle, "plant angles")
+    print(body_straight_angle, "body angle")
+
+    print(getScore(knee_angle, ankle_angle, body_straight_angle, plant_knee_angle, plant_ankle_angle), 'score')
 
 
 
