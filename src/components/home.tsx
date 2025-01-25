@@ -90,13 +90,20 @@ const Home: React.FC = () => {
         throw new Error("Failed to analyze video");
       }
 
-      // Get analysis results
-      const analysis: AnalysisResponse = await response.json();
+      // Get the video blob from the response
+      const videoBlob = await response.blob();
+      const videoObjectUrl = URL.createObjectURL(videoBlob);
+
+      // Get the analysis metadata from headers
+      const score = Number(response.headers.get("X-Shot-Score") || 75);
+      const recommendations = JSON.parse(
+        response.headers.get("X-Shot-Recommendations") || "[]",
+      );
 
       // Update UI with analysis results
-      setVideoUrl(analysis.videoUrl);
-      setScore(analysis.score);
-      setRecommendations(analysis.recommendations);
+      setVideoUrl(videoObjectUrl);
+      setScore(score);
+      setRecommendations(recommendations);
 
       toast({
         title: "Analysis complete",
@@ -107,6 +114,13 @@ const Home: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
+
+    return () => {
+      // Cleanup the object URL when component unmounts
+      if (videoUrl.startsWith("blob:")) {
+        URL.revokeObjectURL(videoUrl);
+      }
+    };
   };
 
   return (
