@@ -17,6 +17,8 @@ interface AnalysisResponse {
   recommendations: Recommendation[];
 }
 
+type FootType = "left" | "right";
+
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
 const Home: React.FC = () => {
@@ -27,6 +29,7 @@ const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
   const [score, setScore] = useState<number>(75);
+  const [selectedFoot, setSelectedFoot] = useState<FootType>("right");
   const [recommendations, setRecommendations] = useState<Recommendation[]>([
     {
       id: "1",
@@ -75,6 +78,7 @@ const Home: React.FC = () => {
       // Create form data
       const formData = new FormData();
       formData.append("video", file);
+      formData.append("foot", selectedFoot);
 
       // Send to backend API
       const response = await fetch("https://api.example.com/analyze-shot", {
@@ -111,21 +115,37 @@ const Home: React.FC = () => {
       <div className="flex-1 p-6">
         <div className="mb-4 space-y-4">
           <div className="flex justify-between items-center">
-            <label
-              htmlFor="video-upload"
-              className={`cursor-pointer inline-flex items-center gap-2 ${isLoading ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"} text-white px-4 py-2 rounded-lg transition-colors`}
-            >
-              <Upload className="w-4 h-4" />
-              <input
-                id="video-upload"
-                type="file"
-                accept="video/*"
-                onChange={handleFileUpload}
-                disabled={isLoading}
-                className="hidden"
-              />
-              {isLoading ? "Loading..." : "Upload Video"}
-            </label>
+            <div className="flex items-center gap-4">
+              <div className="flex bg-gray-800 rounded-lg p-1">
+                <button
+                  onClick={() => setSelectedFoot("left")}
+                  className={`px-4 py-2 rounded-md transition-colors ${selectedFoot === "left" ? "bg-blue-600 text-white" : "text-gray-400 hover:text-white"}`}
+                >
+                  Left Foot
+                </button>
+                <button
+                  onClick={() => setSelectedFoot("right")}
+                  className={`px-4 py-2 rounded-md transition-colors ${selectedFoot === "right" ? "bg-blue-600 text-white" : "text-gray-400 hover:text-white"}`}
+                >
+                  Right Foot
+                </button>
+              </div>
+              <label
+                htmlFor="video-upload"
+                className={`cursor-pointer inline-flex items-center gap-2 ${isLoading ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"} text-white px-4 py-2 rounded-lg transition-colors`}
+              >
+                <Upload className="w-4 h-4" />
+                <span>{isLoading ? "Loading..." : "Upload Video"}</span>
+                <input
+                  id="video-upload"
+                  type="file"
+                  accept="video/*"
+                  onChange={handleFileUpload}
+                  disabled={isLoading}
+                  className="hidden"
+                />
+              </label>
+            </div>
             <span className="text-sm text-gray-400">
               Maximum file size: 100MB
             </span>
