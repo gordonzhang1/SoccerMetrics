@@ -38,7 +38,7 @@ def getFrame(pose_path, ball_path, rightFoot, video_path):
             min_diff = diff
             min_frame = i+1
     print(min_frame)
-    print(getAngles(video_path, min_frame, rightFoot))
+    return getAngles(video_path, min_frame, rightFoot)
 
 def calculate_angle(ax, ay, bx, by, cx, cy):
 
@@ -125,8 +125,8 @@ def getAngles(video_path, frame, rightFoot):
     print(plant_knee_angle, plant_ankle_angle, "plant angles")
     print(body_straight_angle, "body angle")
 
-    print(getScore(knee_angle, ankle_angle, body_straight_angle, plant_knee_angle, plant_ankle_angle), 'score')
-    return knee_angle, ankle_angle, plant_knee_angle, plant_ankle_angle, body_straight_angle
+    score = getScore(knee_angle, ankle_angle, body_straight_angle, plant_knee_angle, plant_ankle_angle)
+    return knee_angle, ankle_angle, plant_knee_angle, plant_ankle_angle, body_straight_angle, score
 
 
 
@@ -135,4 +135,3 @@ pose_csv = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'csv_files',
 soccer_csv = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'csv_files', 'soccer_ball_coordinates.csv')
 video_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'og_vids', 'footy_video.mp4')
 
-getFrame(pose_csv, soccer_csv, True, video_path)

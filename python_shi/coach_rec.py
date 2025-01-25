@@ -71,8 +71,3 @@ def generate_advice(knee_angle: str,
     advice = completion.choices[0].message.content
     return advice
 
-# Example usage
-if __name__ == "__main__":
-    knee_angles, ankle_angles, plant_knee_angles, plant_ankle_angles, body_straight_angle = getAngles(video_path="footy_video.mp4", frame=37, rightFoot=True)
-    advice = generate_advice(knee_angle=knee_angles, ankle_angle=ankle_angles, plant_knee_angle=plant_knee_angles, plant_ankle_angle=plant_ankle_angles, body_straight_angle=body_straight_angle)
-    print(f"Advice: {advice}")

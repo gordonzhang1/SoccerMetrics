@@ -26,11 +26,11 @@ def getScore(
     
     
     optimal = {
-        "knee_angle": 142,
-        "ankle_angle": 142,
+        "knee_angle": 150,
+        "ankle_angle": 150,
         "hip_angle": 180,
         "plant_knee_angle": 158,
-        "plant_ankle_angle": 135,
+        "plant_ankle_angle": 140,
     }
 
     weights = {
@@ -58,4 +58,3 @@ def getScore(
     return max(score, 0)  # Ensure the score doesn't go below 0
 
 
-print(getScore(10, 30, 85, 15, 18))

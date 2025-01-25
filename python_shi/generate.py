@@ -142,10 +142,10 @@ def process_video(video_path, landmarker, csv_path):
     
     # Initialize VideoWriter
     fourcc = cv2.VideoWriter_fourcc(*'avc1')  # Alternative codec
-    out_video = cv2.VideoWriter("python_shi/new_vids/processed_output.mp4", fourcc, fps, (frame_width, frame_height))
+    out_video = cv2.VideoWriter("new_vids/processed_output.mp4", fourcc, fps, (frame_width, frame_height))
     
     # Load bounding box data
-    bounding_box_path = "python_shi/csv_files/soccer_ball_coordinates.csv"  # Path to your bounding box data file
+    bounding_box_path = "csv_files/soccer_ball_coordinates.csv"  # Path to your bounding box data file
     if os.path.exists(bounding_box_path):
         bounding_boxes_df = pd.read_csv(bounding_box_path)
         bounding_boxes_df = bounding_boxes_df.drop_duplicates(subset='Frame', keep='first')  # Remove duplicate frames
@@ -235,9 +235,9 @@ def process_video(video_path, landmarker, csv_path):
 
 def main():
     # Define paths
-    video_path = "python_shi/og_vids/footy_video.mp4"  # Replace with your video path
-    model_path = "python_shi/da_models/pose_landmarker_heavy.task"  # Replace with your model path
-    csv_output_path = "python_shi/csv_files/pose_landmarks.csv"  # Output CSV file
+    video_path = "og_vids/footy_video.mp4"  # Replace with your video path
+    model_path = "da_models/pose_landmarker_heavy.task"  # Replace with your model path
+    csv_output_path = "csv_files/pose_landmarks.csv"  # Output CSV file
     
     # Check if model file exists
     if not os.path.exists(model_path):
@@ -249,6 +249,7 @@ def main():
     
     # Initialize PoseLandmarker
     landmarker = initialize_landmarker(options)
+    print('finished initializing landmarkers')
     
     try:
         # Process the video and save pose landmarks to CSV
@@ -259,5 +260,3 @@ def main():
         landmarker.close()
         print(f"Pose landmarks saved to {csv_output_path}")
 
-if __name__ == "__main__":
-    main()

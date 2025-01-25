@@ -27,3 +27,5 @@ venv/
 
 **/tempobook/dynamic/
 **/tempobook/storyboards/
+
+.env
