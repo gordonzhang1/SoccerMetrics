@@ -15,7 +15,7 @@ def detect_ball(vid_path):
     detection_data = []
 
     # Prepare CSV file to save coordinates
-    csv_filename = "csv_files/soccer_ball_coordinates.csv"
+    csv_filename = "python_shi/csv_files/soccer_ball_coordinates.csv"
     with open(csv_filename, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Frame", "X1", "Y1", "X2", "Y2", "Confidence"])  # CSV Header
