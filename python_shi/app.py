@@ -26,15 +26,7 @@ def get_ball():
         video_path = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(video_path)
 
-        db = detect_ball(video_path)
-
-        output = StringIO()
-        db.to_csv(output, index=False)
-        output.seek(0)
-
-        csv_content = output.getvalue()
         
-        return jsonify({'csv': csv_content})
         
     except Exception as e:
         return jsonify({'error': str(e)}), 500
