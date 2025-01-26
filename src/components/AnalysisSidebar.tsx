@@ -59,19 +59,19 @@ const AnalysisSidebar: React.FC<AnalysisSidebarProps> = ({
         <div>
           <ul className="space-y-2 text-white">
             <li>
-              <strong>Knee Angle:</strong> {kneeAngle}
+              <strong>Knee Angle:</strong> {kneeAngle}°
             </li>
             <li>
-              <strong>Ankle Angle:</strong> {ankleAngle}
+              <strong>Ankle Angle:</strong> {ankleAngle}°
             </li>
             <li>
-              <strong>Plant Knee Angle:</strong> {plantKneeAngle}
+              <strong>Plant Knee Angle:</strong> {plantKneeAngle}°
             </li>
             <li>
-              <strong>Plant Ankle Angle:</strong> {plantAnkleAngle}
+              <strong>Plant Ankle Angle:</strong> {plantAnkleAngle}°
             </li>
             <li>
-              <strong>Body Straight Angle:</strong> {bodyStraightAngle}
+              <strong>Body Straight Angle:</strong> {bodyStraightAngle}°
             </li>
           </ul>
         </div>
