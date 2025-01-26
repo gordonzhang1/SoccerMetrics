@@ -45,23 +45,8 @@ def generate_advice(knee_angle: str,
                     f"The angle related to my body's straightness is {body_straight_angle}. "
                     "Provide some coaching tips based on these angles. "
                     "Always format your response as follows:"
-                    '{"recommendations": ['
-                    '    {'
-                    '        "id": "1",'
-                    '        "title": "Improve Accuracy",'
-                    '        "description": "Focus on consistent follow-through.",'
-                    '    },'
-                    '    {'
-                    '        "id": "2",'
-                    '        "title": "Better Stance",'
-                    '        "description": "Keep your knees bent slightly for balance.",'
-                    '    },'
-                    '    {'
-                    '        "id": "3",'
-                    '        "title": "Plant Foot Position",'
-                    '        "description": "Position your plant foot closer to the ball for stability.",'
-                    '    },'
-                    ']}'
+                    '[{"id":"1","title":"Improve Follow Through","description":"Extend your kicking leg fully after contact with the ball for better power and accuracy."},{"id":"2","title":"Plant Foot Position","description":"Position your plant foot closer to the ball for better stability and control."},{"id":"3","title":"Hip Rotation","description":"Increase hip rotation during the shot to generate more power in your kicks."}]'
+                    
                 )
             }
         ]
