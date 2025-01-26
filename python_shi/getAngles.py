@@ -127,7 +127,7 @@ def getAngles(video_path, frame, rightFoot):
 
     score = getScore(knee_angle, ankle_angle, body_straight_angle, plant_knee_angle, plant_ankle_angle)
     return knee_angle, ankle_angle, plant_knee_angle, plant_ankle_angle, body_straight_angle, score
-
+    
 
 
 

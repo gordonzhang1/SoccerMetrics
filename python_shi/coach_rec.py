@@ -44,24 +44,24 @@ def generate_advice(knee_angle: str,
                     f"The angle between my plant knee, plant ankle, and toe is {plant_ankle_angle}. "
                     f"The angle related to my body's straightness is {body_straight_angle}. "
                     "Provide some coaching tips based on these angles. "
-                    "Always format your response as follows:\n"
-                    '"recommendations": [\n'
-                    '    {\n'
-                    '        "id": "1",\n'
-                    '        "title": "Improve Accuracy",\n'
-                    '        "description": "Focus on consistent follow-through.",\n'
-                    '    },\n'
-                    '    {\n'
-                    '        "id": "2",\n'
-                    '        "title": "Better Stance",\n'
-                    '        "description": "Keep your knees bent slightly for balance.",\n'
-                    '    },\n'
-                    '    {\n'
-                    '        "id": "3",\n'
-                    '        "title": "Plant Foot Position",\n'
-                    '        "description": "Position your plant foot closer to the ball for stability.",\n'
-                    '    },\n'
-                    '],'
+                    "Always format your response as follows:"
+                    '{"recommendations": ['
+                    '    {'
+                    '        "id": "1",'
+                    '        "title": "Improve Accuracy",'
+                    '        "description": "Focus on consistent follow-through.",'
+                    '    },'
+                    '    {'
+                    '        "id": "2",'
+                    '        "title": "Better Stance",'
+                    '        "description": "Keep your knees bent slightly for balance.",'
+                    '    },'
+                    '    {'
+                    '        "id": "3",'
+                    '        "title": "Plant Foot Position",'
+                    '        "description": "Position your plant foot closer to the ball for stability.",'
+                    '    },'
+                    ']}'
                 )
             }
         ]
