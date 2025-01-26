@@ -15,6 +15,8 @@ def getFrame(pose_path, ball_path, rightFoot, video_path):
     height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 
     print(pp.shape[0], bp.shape[0])
+    print(pp)
+    print(bp)
     for i in range(min(pp.shape[0], bp.shape[0])):
 
         if rightFoot:
@@ -33,10 +35,10 @@ def getFrame(pose_path, ball_path, rightFoot, video_path):
         y_center = (y1_ball + y2_ball) / 2
 
         diff = (x_lm - x_center) ** 2 + (y_lm - y_center) ** 2
-        print(diff)
-        if diff < min_diff:
+        print(diff, min_frame)
+        if diff < min_diff and i in pp["frame_number"].values and i in bp["Frame"].values:
             min_diff = diff
-            min_frame = i+1
+            min_frame = i
     print("min_frame", min_frame)
     return getAngles(video_path, min_frame, rightFoot)
 
