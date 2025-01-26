@@ -4,6 +4,11 @@ import RecommendationsPanel from "./RecommendationsPanel";
 
 interface AnalysisSidebarProps {
   score?: number;
+  kneeAngle?: number;
+  ankleAngle?: number;
+  plantKneeAngle?: number;
+  plantAnkleAngle?: number;
+  bodyStraightAngle?: number;
   recommendations?: Array<{
     id: string;
     title: string;
@@ -13,24 +18,29 @@ interface AnalysisSidebarProps {
 
 const AnalysisSidebar: React.FC<AnalysisSidebarProps> = ({
   score = 75,
+  kneeAngle,
+  ankleAngle,
+  plantKneeAngle,
+  plantAnkleAngle,
+  bodyStraightAngle,
   recommendations = [
     {
       id: "1",
-      title: "Improve Follow Through",
+      title: "",
       description:
-        "Extend your kicking leg fully after contact with the ball for better power and accuracy.",
+        "",
     },
     {
       id: "2",
-      title: "Plant Foot Position",
+      title: "",
       description:
-        "Position your plant foot closer to the ball for better stability and control.",
+        "",
     },
     {
       id: "3",
-      title: "Hip Rotation",
+      title: "",
       description:
-        "Increase hip rotation during the shot to generate more power in your kicks.",
+        "",
     },
   ],
 }) => {
@@ -46,7 +56,25 @@ const AnalysisSidebar: React.FC<AnalysisSidebarProps> = ({
         <h2 className="text-2xl font-semibold text-white mb-6">
             Angles at impact
         </h2>
-        
+        <div>
+          <ul className="space-y-2 text-white">
+            <li>
+              <strong>Knee Angle:</strong> {kneeAngle}
+            </li>
+            <li>
+              <strong>Ankle Angle:</strong> {ankleAngle}
+            </li>
+            <li>
+              <strong>Plant Knee Angle:</strong> {plantKneeAngle}
+            </li>
+            <li>
+              <strong>Plant Ankle Angle:</strong> {plantAnkleAngle}
+            </li>
+            <li>
+              <strong>Body Straight Angle:</strong> {bodyStraightAngle}
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="flex-1">
         <RecommendationsPanel

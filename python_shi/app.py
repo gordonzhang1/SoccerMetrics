@@ -50,11 +50,11 @@ def get_ball():
             'score': score, 
             'advice': advice_json, 
             'video': encoded_video,
-            'knee_angle': knee_angle,
-            'ankle_angle': ankle_angle,
-            'plant_knee_angle': plant_knee_angle,
-            'plant_ankle_angle': plant_ankle_angle,
-            'body_straight_angle': body_straight_angle
+            'knee_angle': round(knee_angle, 2),
+            'ankle_angle': round(ankle_angle, 2),
+            'plant_knee_angle': round(plant_knee_angle, 2),
+            'plant_ankle_angle': round(plant_ankle_angle, 2),
+            'body_straight_angle': round(body_straight_angle, 2)
             })
 
     except Exception as e:

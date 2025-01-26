@@ -54,6 +54,11 @@ const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
   const [score, setScore] = useState<number>(0);
+  const [kneeAngle, setKneeAngle] = useState<number>(0);
+  const [ankleAngle, setAnkleAngle] = useState<number>(0);
+  const [plantKneeAngle, setPlantKneeAngle] = useState<number>(0);
+  const [plantAnkleAngle, setPlantAnkleAngle] = useState<number>(0);
+  const [bodyStraightAngle, setBodyStraightAngle] = useState<number>(0);
   const [selectedFoot, setSelectedFoot] = useState<foot>("right");
   const [recommendations, setRecommendations] = useState<Recommendation[]>([
     {
@@ -131,6 +136,11 @@ const Home: React.FC = () => {
       setVideoUrl(videoObjectUrl);
       setScore(Math.round(data.score));
       setRecommendations(data.advice);
+      setKneeAngle(data.knee_angle);
+      setAnkleAngle(data.ankle_angle);
+      setPlantKneeAngle(data.plant_knee_angle);
+      setPlantAnkleAngle(data.plant_ankle_angle);
+      setBodyStraightAngle(data.body_straight_angle);
 
       toast({
         title: "Analysis complete",
@@ -220,9 +230,9 @@ const Home: React.FC = () => {
       </div>
 
       {/* Analysis sidebar */}
-      <AnalysisSidebar score={score} recommendations={recommendations} />
+      <AnalysisSidebar score={score} recommendations={recommendations} kneeAngle={kneeAngle} ankleAngle={ankleAngle} plantAnkleAngle={plantAnkleAngle} plantKneeAngle={plantKneeAngle} bodyStraightAngle={bodyStraightAngle}/>
     </div>
-  );
+  ); 
 };
 
 export default Home;
