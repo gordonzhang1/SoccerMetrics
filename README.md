@@ -51,19 +51,19 @@
   <a href="https://github.com/gordonzhang1/SoccerMetrics">
     <img src="https://www.gordonzhang.ca/assets/soccer-D0wiagJS.png" alt="Logo" width="1000" height="auto">
   </a>
-  <p>  SoccerMetrics 
+  <p>  SoccerMetrics lets you upload a video of you kicking a soccer ball, analyzes the video, and gives you a score and feedback on your kick based on the optimal form
 </p>
 
 
 ## What it does, and how we built it
 </h3>
-<p>WhaleBeing uses a dynamic prediction model to display how ship routes interact with blue whale habitats using a web app.
+<p>The platform provides players and coaches with actionable insights by analyzing biomechanics and comparing them to optimal standards. It identifies critical moments in gameplay—such as ball contact or specific movements—and evaluates joint angles, body posture, and overall technique. These measurements are compared to predefined optimal angles for peak performance. A custom scoring algorithm calculates a performance score for each movement, offering a clear metric for improvement and progress tracking.
 
-The core of our maching learning model is based off a 2019 research paper published in _ Diversity and Distributions (https://onlinelibrary.wiley.com/doi/full/10.1111/ddi.12940) _, and predicts daily, year-round habitat suitability for blue whales off the coast of California. We implemented a method using a Boosted Regression Tree and candidate Generalized Additive Mixed Models to use satellite data of tracked blue whales to produce a whale distribution prediction.
+The platform uses MediaPipe GHUM 3D to extract precise 3D pose landmarks, allowing us to calculate joint angles and other biomechanical metrics. For each movement, joint angles are compared against a database of optimal angles derived from professional player data and biomechanical studies. Deviations from these optimal angles are quantified and factored into a custom scoring algorithm, which evaluates performance based on accuracy, consistency, and technique.
 
-WhaleBeing enables users to search and visualize ship routes overlaid on our dynamic prediction heatmaps using the SeaRoutes API. Once a ship route is found, WhaleBeing calculates the likelihood of that route intersecting with areas of high blue whale activity by integrating the distribution weights along the nodes of the ship route.
+Critical gameplay moments, such as ball contact, are identified using Pandas, and visualizations of angles and trajectories are annotated in real-time with OpenCV. Personalized feedback, based on the performance score, is generated using LangChain and the OpenAI API, ensuring that players receive detailed recommendations tailored to their unique needs.
 
-This calculation is pivotal in assessing the risk of ship strikes and supports proactive decision-making to mitigate such risks, ultimately aiding in the protection of this endangered species.</p>
+The scoring and feedback system operates seamlessly within a robust infrastructure powered by Docker for containerization, Kubernetes for scalability, and Google Cloud Platform for hosting. This architecture ensures the platform is both reliable and adaptable to various training scenarios. </p>
 
 
 
