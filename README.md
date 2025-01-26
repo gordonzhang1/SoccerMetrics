@@ -93,10 +93,13 @@ The scoring and feedback system operates seamlessly within a robust infrastructu
 
 ## Features
 <ul>
-  <li><strong>AI-Powered Whale Distribution Prediction:</strong> Built a machine learning model in Python with NumPy and Pandas to predict whale distribution patterns using open-source satellite data, providing whale presence forecasts for any day of the year.</li>
-  <li><strong>Real-Time Whale Heatmap:</strong> Integrated the machine learning model with the Mapbox API to deliver an interactive, real-time predictive whale heatmap, enhancing maritime navigation and minimizing the risk of ship strikes.</li>
-  <li><strong>Ship Strike Risk Analysis:</strong> Developed a Python-based risk-analysis algorithm in Flask to assess the probability of ship strikes with whales.</li>
-  <li><strong>Seamless Integration with Ship Route Search:</strong> Incorporated the Searoutes API to enable dynamic ship route searches, calculating risk percentages based on predicted whale presence.</li>
+  <li><strong>Real-Time Ball Detection:</strong> Utilizes Ultralytics YOLOv8 for precise and efficient ball tracking during gameplay.</li>
+  <li><strong>3D Pose Landmark Extraction:</strong> Employs MediaPipe GHUM 3D to analyze player movements and extract biomechanical data.</li>
+  <li><strong>Biomechanical Metrics and Angle Calculations:</strong> Measures joint angles, body posture, and movement patterns to assess technical performance.</li>
+  <li><strong>Optimal Angle Comparison:</strong> Benchmarks player movements against predefined optimal angles derived from professional standards.</li>
+  <li><strong>Custom Scoring Algorithm:</strong> Calculates a performance score based on accuracy, deviation from optimal angles, and consistency.</li>
+  <li><strong>Personalized AI Feedback:</strong> Integrates OpenAI API to deliver tailored coaching tips and improvement suggestions.</li>
+
 
 </ul>
 And more to come! 
