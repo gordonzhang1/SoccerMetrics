@@ -77,6 +77,7 @@ The scoring and feedback system operates seamlessly within a robust infrastructu
 * [![OpenCV][OpenCV]][OpenCV-url]
 * [![MediaPipe][MediaPipe]][MediaPipe-url]
 * [![OpenAI API][OpenAI]][OpenAI-url]
+* [![TailwindCSS][TailwindCSS]][TailwindCSS-url]
 
 
 
