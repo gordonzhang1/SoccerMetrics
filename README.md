@@ -108,12 +108,14 @@ And more to come!
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+
+
+<!--## Getting Started
 
 <p>Want to try WhaleBeing out? Go to <a href="https://www.whalebeing.co/">www.whalebeing.ca</a> and type in 9455911 for the ship IMO number, and 2025/01/09 - 2025/01/11 for the dates. </p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+-->
 
 
 
@@ -139,14 +141,7 @@ Don't forget to give the project a star! Thanks again!
 
 
 
-<!-- CONTACT -->
-## Contact
 
-Gordon Zhang - g234zhan@uwaterloo.ca
-
-Project Link: [https://github.com/gordonzhang1/WhaleBeing](https://github.com/gordonzhang1/WhaleBeing)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
