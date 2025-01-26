@@ -40,9 +40,14 @@ const AnalysisSidebar: React.FC<AnalysisSidebarProps> = ({
         <h2 className="text-2xl font-semibold text-white mb-6">
           Shot Analysis
         </h2>
-        <ScoreGauge score={score} size="lg" showLabel={true} />
+        <ScoreGauge score={score} size="md" showLabel={true} />
       </div>
-
+      <div className="flex flex-col items-center">
+        <h2 className="text-2xl font-semibold text-white mb-6">
+            Angles at impact
+        </h2>
+        
+      </div>
       <div className="flex-1">
         <RecommendationsPanel
           recommendations={recommendations}
