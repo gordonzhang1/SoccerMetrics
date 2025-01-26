@@ -61,7 +61,7 @@
 
 The platform uses MediaPipe GHUM 3D to extract precise 3D pose landmarks, allowing us to calculate joint angles and other biomechanical metrics. For each movement, joint angles are compared against a database of optimal angles derived from professional player data and biomechanical studies. Deviations from these optimal angles are quantified and factored into a custom scoring algorithm, which evaluates performance based on accuracy, consistency, and technique.
 
-Critical gameplay moments, such as ball contact, are identified using Pandas, and visualizations of angles and trajectories are annotated in real-time with OpenCV. Personalized feedback, based on the performance score, is generated using LangChain and the OpenAI API, ensuring that players receive detailed recommendations tailored to their unique needs.
+It also uses Ultralytics YOLOv8 for ball detection. Critical gameplay moments, such as ball contact, are identified using Pandas, and visualizations of angles and trajectories are annotated in real-time with OpenCV. Personalized feedback, based on the performance score, is generated using LangChain and the OpenAI API, ensuring that players receive detailed recommendations tailored to their unique needs.
 
 The scoring and feedback system operates seamlessly within a robust infrastructure powered by Docker for containerization, Kubernetes for scalability, and Google Cloud Platform for hosting. This architecture ensures the platform is both reliable and adaptable to various training scenarios. </p>
 
