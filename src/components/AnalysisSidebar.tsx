@@ -52,6 +52,12 @@ const AnalysisSidebar: React.FC<AnalysisSidebarProps> = ({
         </h2>
         <ScoreGauge score={score} size="md" showLabel={true} />
       </div>
+      <div className="flex-1">
+        <RecommendationsPanel
+          recommendations={recommendations}
+          isExpanded={true}
+        />
+      </div>
       <div className="flex flex-col items-center">
         <h2 className="text-2xl font-semibold text-white mb-6">
             Angles at impact
@@ -75,12 +81,6 @@ const AnalysisSidebar: React.FC<AnalysisSidebarProps> = ({
             </li>
           </ul>
         </div>
-      </div>
-      <div className="flex-1">
-        <RecommendationsPanel
-          recommendations={recommendations}
-          isExpanded={true}
-        />
       </div>
     </div>
   );
