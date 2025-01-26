@@ -124,7 +124,7 @@ const Home: React.FC = () => {
 
       // Update UI with analysis results
       setVideoUrl(videoObjectUrl);
-      setScore(data.score);
+      setScore(Math.round(data.score));
       setRecommendations(data.advice);
 
       toast({
