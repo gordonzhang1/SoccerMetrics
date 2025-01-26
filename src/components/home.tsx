@@ -53,26 +53,26 @@ const Home: React.FC = () => {
   );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
-  const [score, setScore] = useState<number>(75);
+  const [score, setScore] = useState<number>(0);
   const [selectedFoot, setSelectedFoot] = useState<Boolean>(true);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([
     {
       id: "1",
-      title: "Improve Follow Through",
+      title: "",
       description:
-        "Extend your kicking leg fully after contact with the ball for better power and accuracy.",
+        "",
     },
     {
       id: "2",
-      title: "Plant Foot Position",
+      title: "",
       description:
-        "Position your plant foot closer to the ball for better stability and control.",
+        "",
     },
     {
       id: "3",
-      title: "Hip Rotation",
+      title: "",
       description:
-        "Increase hip rotation during the shot to generate more power in your kicks.",
+        "",
     },
   ]);
 
@@ -103,7 +103,7 @@ const Home: React.FC = () => {
       // Create form data
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("rightFoot", selectedFoot);
+      formData.append("rightFoot", selectedFoot.toString());
       console.log(selectedFoot, 'selected foot')
       // Send to backend API
       const response = await fetch("http://127.0.0.1:5000/get_stuff", {

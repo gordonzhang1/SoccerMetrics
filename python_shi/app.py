@@ -59,6 +59,17 @@ def get_ball():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+    finally:
+        # Remove files after processing
+        try:
+            os.remove('new_vids/processed_output.mp4')
+            os.remove('csv_files/pose_landmarks.csv')
+            os.remove('csv_files/soccer_ball_coordinates.csv')
+            os.remove(video_path)
+        except Exception as remove_error:
+            print(f"Error removing files: {remove_error}")
+    
 
 if __name__ == '__main__':
     app.run(debug=False)
