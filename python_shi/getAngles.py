@@ -37,7 +37,7 @@ def getFrame(pose_path, ball_path, rightFoot, video_path):
         if diff < min_diff:
             min_diff = diff
             min_frame = i+1
-    print(min_frame)
+    print("min_frame", min_frame)
     return getAngles(video_path, min_frame, rightFoot)
 
 def calculate_angle(ax, ay, bx, by, cx, cy):
