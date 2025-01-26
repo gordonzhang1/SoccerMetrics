@@ -52,10 +52,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-  <a href="https://github.com/gordonzhang1/ShakespeareAI">
-    <img src="https://www.gordonzhang.ca/assets/WhaleBeing-CMRDC8OQ.png" alt="Logo" width="1000" height="auto">
+  <a href="https://github.com/gordonzhang1/SoccerMetrics">
+    <img src="https://www.gordonzhang.ca/assets/soccer-D0wiagJS.png" alt="Logo" width="1000" height="auto">
   </a>
-  <p>  SoccerMetrics is a 
+  <p>  SoccerMetrics 
 </p>
 
 
