@@ -17,7 +17,7 @@ interface AnalysisResponse {
   video: string; // base64-encoded string
 }
 
-type FootType = "left" | "right";
+
 
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
   const [score, setScore] = useState<number>(75);
-  const [selectedFoot, setSelectedFoot] = useState<FootType>("right");
+  const [selectedFoot, setSelectedFoot] = useState<Boolean>(true);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([
     {
       id: "1",
@@ -99,7 +99,7 @@ const Home: React.FC = () => {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("rightFoot", selectedFoot);
-
+      console.log(selectedFoot, 'selected foot')
       // Send to backend API
       const response = await fetch("http://127.0.0.1:5000/get_stuff", {
         method: "POST",
@@ -154,9 +154,9 @@ const Home: React.FC = () => {
             <div className="flex items-center gap-4">
               <div className="flex bg-gray-800 rounded-lg p-1">
                 <button
-                  onClick={() => setSelectedFoot("left")}
+                  onClick={() => setSelectedFoot(false)}
                   className={`px-4 py-2 rounded-md transition-colors ${
-                    selectedFoot === "left"
+                    selectedFoot === false
                       ? "bg-blue-600 text-white"
                       : "text-gray-400 hover:text-white"
                   }`}
@@ -164,9 +164,9 @@ const Home: React.FC = () => {
                   Left Foot
                 </button>
                 <button
-                  onClick={() => setSelectedFoot("right")}
+                  onClick={() => setSelectedFoot(true)}
                   className={`px-4 py-2 rounded-md transition-colors ${
-                    selectedFoot === "right"
+                    selectedFoot === true
                       ? "bg-blue-600 text-white"
                       : "text-gray-400 hover:text-white"
                   }`}
