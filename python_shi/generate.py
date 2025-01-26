@@ -253,10 +253,12 @@ def main():
     
     try:
         # Process the video and save pose landmarks to CSV
+        print("lol")
         detect_ball(video_path)
+        print("lol")
         process_video(video_path, landmarker, csv_output_path)
+        print("lol")
     finally:
         # Ensure the landmarker is closed properly
         landmarker.close()
         print(f"Pose landmarks saved to {csv_output_path}")
-
