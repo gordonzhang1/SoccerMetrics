@@ -70,13 +70,14 @@ This calculation is pivotal in assessing the risk of ship strikes and supports p
 ### Built With
 
 * [![React][React.js]][React-url]
+* [![TypeScript][TypeScript]][TypeScript-url]
 * [![Python][Python]][Python-url]
 * [![Flask][Flask]][Flask-url]
-* [![NumPy][NumPy]][NumPy-url]
 * [![Pandas][Pandas]][Pandas-url]
-* [![TypeScript][TypeScript]][TypeScript-url]
 * [![OpenCV][OpenCV]][OpenCV-url]
 * [![MediaPipe][MediaPipe]][MediaPipe-url]
+* [![OpenAI API][OpenAI]][OpenAI-url]
+
 
 
 
@@ -84,6 +85,8 @@ This calculation is pivotal in assessing the risk of ship strikes and supports p
 
 ### Deployed With
 * [![Google Cloud][GoogleCloud]][GoogleCloud-url]
+* [![Docker][Docker]][Docker-url]
+* [![Kubernetes][Kubernetes]][Kubernetes-url]
 * [![Vercel][Vercel]][Vercel-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -233,3 +236,12 @@ Project Link: [https://github.com/gordonzhang1/WhaleBeing](https://github.com/go
 
 [TypeScript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
 [TypeScript-url]: https://www.typescriptlang.org/
+
+[Docker]: https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
+
+[Kubernetes]: https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white
+[Kubernetes-url]: https://kubernetes.io/
+
+[OpenAI]: https://img.shields.io/badge/OpenAI_API-412991?style=for-the-badge&logo=openai&logoColor=white
+[OpenAI-url]: https://platform.openai.com/
