@@ -15,9 +15,14 @@ interface AnalysisResponse {
   advice: Recommendation[];
   score: number;
   video: string; // base64-encoded string
+  knee_angle: number;
+  ankle_angle: number;
+  plant_knee_angle: number;
+  plant_ankle_angle: number;
+  body_straight_angle: number;
 }
 
-
+type foot = "left" | "right";
 
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
@@ -49,7 +54,7 @@ const Home: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
   const [score, setScore] = useState<number>(0);
-  const [selectedFoot, setSelectedFoot] = useState<Boolean>(true);
+  const [selectedFoot, setSelectedFoot] = useState<foot>("right");
   const [recommendations, setRecommendations] = useState<Recommendation[]>([
     {
       id: "1",
@@ -154,9 +159,9 @@ const Home: React.FC = () => {
             <div className="flex items-center gap-4">
               <div className="flex bg-gray-800 rounded-lg p-1">
                 <button
-                  onClick={() => setSelectedFoot(false)}
+                  onClick={() => setSelectedFoot("left")}
                   className={`px-4 py-2 rounded-md transition-colors ${
-                    selectedFoot === false
+                    selectedFoot === "left"
                       ? "bg-blue-600 text-white"
                       : "text-gray-400 hover:text-white"
                   }`}
@@ -164,9 +169,9 @@ const Home: React.FC = () => {
                   Left Foot
                 </button>
                 <button
-                  onClick={() => setSelectedFoot(true)}
+                  onClick={() => setSelectedFoot("right")}
                   className={`px-4 py-2 rounded-md transition-colors ${
-                    selectedFoot === true
+                    selectedFoot === "right"
                       ? "bg-blue-600 text-white"
                       : "text-gray-400 hover:text-white"
                   }`}

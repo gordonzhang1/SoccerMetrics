@@ -46,7 +46,16 @@ def get_ball():
             encoded_video = base64.b64encode(video_file.read()).decode('utf-8')
         advice_json = json.loads(advice)
         print(advice_json, 'advice_json')
-        return jsonify({'score': score, 'advice': advice_json, 'video': encoded_video})
+        return jsonify({
+            'score': score, 
+            'advice': advice_json, 
+            'video': encoded_video,
+            'knee_angle': knee_angle,
+            'ankle_angle': ankle_angle,
+            'plant_knee_angle': plant_knee_angle,
+            'plant_ankle_angle': plant_ankle_angle,
+            'body_straight_angle': body_straight_angle
+            })
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
