@@ -22,6 +22,7 @@ def detect_ball(vid_path):
 
         frame_number = 0
         while cap.isOpened():
+            print("fuc")
             ret, frame = cap.read()
             if not ret:
                 break  # Exit if video is finished
@@ -48,20 +49,21 @@ def detect_ball(vid_path):
                         })
 
                         # Draw bounding box
-                        cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
-                        cv2.putText(frame, f"Soccer Ball: {conf:.2f}", (int(x1), int(y1) - 10),
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                        # cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
+                        # cv2.putText(frame, f"Soccer Ball: {conf:.2f}", (int(x1), int(y1) - 10),
+                        #             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
                         # Print coordinates
                         print(f"Frame {frame_number}: Soccer Ball at ({int(x1)}, {int(y1)}) -> ({int(x2)}, {int(y2)}) with confidence {conf:.2f}")
 
                         # Save coordinates to CSV
                         writer.writerow([frame_number, int(x1), int(y1), int(x2), int(y2), f"{conf:.2f}"])
+                        print("fuc2")
 
             # Display frame (optional)
-            cv2.imshow("Soccer Ball Detection", frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
+            # cv2.imshow("Soccer Ball Detection", frame)
+            # if cv2.waitKey(1) & 0xFF == ord('q'):
+            #     break
     
     cap.release()
     cv2.destroyAllWindows()
@@ -73,4 +75,4 @@ def detect_ball(vid_path):
 
 #testing
 
-# print(detect_ball("videos/footy_video.mp4"))
+#print(detect_ball("og_vids/footy_video.mp4"))
