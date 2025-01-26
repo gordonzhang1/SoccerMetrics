@@ -181,7 +181,7 @@ def process_video(video_path, landmarker, csv_path):
         pose_landmarker_result = landmarker.detect_for_video(mp_image, int(current_timestamp))
         
         if pose_landmarker_result.pose_landmarks:
-            print(pose_landmarker_result.pose_landmarks)
+
             landmarks = pose_landmarker_result.pose_landmarks[0]
             frame_data = {
                 'frame_number': frame_count + 1,  # Adjusted to match 'Frame' in CSV
