@@ -34,14 +34,14 @@ def getScore(
     }
 
     weights = {
-        "knee_angle": 2,
-        "ankle_angle": 1.5,
-        "hip_angle": 1.5,
-        "plant_knee_angle": 1,
-        "plant_ankle_angle": 1,  
-        "plant_hip_angle": 1,   
-        "torso_lean_angle": 1,
-        "arm_angle": 0.5
+        "knee_angle": 0.8,
+        "ankle_angle": 0.6,
+        "hip_angle": 0.6,
+        "plant_knee_angle": 0.4,
+        "plant_ankle_angle": 0.4,  
+        "plant_hip_angle": 0.4,   
+        "torso_lean_angle": 0.4,
+        "arm_angle": 0.2
     }
     
     penalties = {

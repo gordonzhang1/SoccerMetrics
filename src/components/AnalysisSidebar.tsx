@@ -77,7 +77,7 @@ const AnalysisSidebar: React.FC<AnalysisSidebarProps> = ({
               <strong>Plant Ankle Angle:</strong> {plantAnkleAngle}°
             </li>
             <li>
-              <strong>Body Straight Angle:</strong> {bodyStraightAngle}°
+              <strong>Body Angle:</strong> {bodyStraightAngle}°
             </li>
           </ul>
         </div>
