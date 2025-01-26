@@ -66,7 +66,7 @@ def get_ball():
             os.remove('new_vids/processed_output.mp4')
             os.remove('csv_files/pose_landmarks.csv')
             os.remove('csv_files/soccer_ball_coordinates.csv')
-            os.remove(video_path)
+            os.remove('og_vids/footy_video.mp4')
         except Exception as remove_error:
             print(f"Error removing files: {remove_error}")
     
