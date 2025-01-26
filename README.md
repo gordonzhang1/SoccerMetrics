@@ -31,7 +31,7 @@
   <p align="center">
     AI soccer shot analysis platform to improve kicking form
     <br />
-    <a href="https://www.youtube.com/watch?v=WyINpCzZDsw" target="_blank"><strong>View Demo »</strong></a>
+    <a href="https://www.youtube.com/watch?v=Ng-EbAInbGE" target="_blank"><strong>View Demo »</strong></a>
     <br />
     <br />
 
