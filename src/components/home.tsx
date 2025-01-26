@@ -12,19 +12,39 @@ interface Recommendation {
 }
 
 interface AnalysisResponse {
-  videoUrl: string;
+  advice: Recommendation[];
   score: number;
-  recommendations: Recommendation[];
+  video: string; // base64-encoded string
 }
 
 type FootType = "left" | "right";
 
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
+// Helper to convert base64 string to a Blob
+function base64ToBlob(base64: string, contentType = ""): Blob {
+  const byteCharacters = atob(base64);
+  const byteArrays = [];
+
+  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+    const slice = byteCharacters.slice(offset, offset + 512);
+
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+
+  return new Blob(byteArrays, { type: contentType });
+}
+
 const Home: React.FC = () => {
   const { toast } = useToast();
   const [videoUrl, setVideoUrl] = useState<string>(
-    "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
   );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
@@ -52,7 +72,7 @@ const Home: React.FC = () => {
   ]);
 
   const handleFileUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -77,11 +97,11 @@ const Home: React.FC = () => {
 
       // Create form data
       const formData = new FormData();
-      formData.append("video", file);
-      formData.append("foot", selectedFoot);
+      formData.append("file", file);
+      formData.append("rightFoot", selectedFoot);
 
       // Send to backend API
-      const response = await fetch("https://api.example.com/analyze-shot", {
+      const response = await fetch("http://127.0.0.1:5000/get_stuff", {
         method: "POST",
         body: formData,
       });
@@ -90,20 +110,22 @@ const Home: React.FC = () => {
         throw new Error("Failed to analyze video");
       }
 
-      // Get the video blob from the response
-      const videoBlob = await response.blob();
-      const videoObjectUrl = URL.createObjectURL(videoBlob);
+      // Backend now returns JSON:
+      // {
+      //   "advice": [...],
+      //   "score": 91.12683189019864,
+      //   "video": "<base64-encoded-string>"
+      // }
+      const data: AnalysisResponse = await response.json();
 
-      // Get the analysis metadata from headers
-      const score = Number(response.headers.get("X-Shot-Score") || 75);
-      const recommendations = JSON.parse(
-        response.headers.get("X-Shot-Recommendations") || "[]",
-      );
+      // Extract base64 video and convert to Blob
+      const videoBlob = base64ToBlob(data.video, "video/mp4");
+      const videoObjectUrl = URL.createObjectURL(videoBlob);
 
       // Update UI with analysis results
       setVideoUrl(videoObjectUrl);
-      setScore(score);
-      setRecommendations(recommendations);
+      setScore(data.score);
+      setRecommendations(data.advice);
 
       toast({
         title: "Analysis complete",
@@ -115,8 +137,8 @@ const Home: React.FC = () => {
       setIsLoading(false);
     }
 
+    // Clean up object URL if needed
     return () => {
-      // Cleanup the object URL when component unmounts
       if (videoUrl.startsWith("blob:")) {
         URL.revokeObjectURL(videoUrl);
       }
@@ -133,20 +155,30 @@ const Home: React.FC = () => {
               <div className="flex bg-gray-800 rounded-lg p-1">
                 <button
                   onClick={() => setSelectedFoot("left")}
-                  className={`px-4 py-2 rounded-md transition-colors ${selectedFoot === "left" ? "bg-blue-600 text-white" : "text-gray-400 hover:text-white"}`}
+                  className={`px-4 py-2 rounded-md transition-colors ${
+                    selectedFoot === "left"
+                      ? "bg-blue-600 text-white"
+                      : "text-gray-400 hover:text-white"
+                  }`}
                 >
                   Left Foot
                 </button>
                 <button
                   onClick={() => setSelectedFoot("right")}
-                  className={`px-4 py-2 rounded-md transition-colors ${selectedFoot === "right" ? "bg-blue-600 text-white" : "text-gray-400 hover:text-white"}`}
+                  className={`px-4 py-2 rounded-md transition-colors ${
+                    selectedFoot === "right"
+                      ? "bg-blue-600 text-white"
+                      : "text-gray-400 hover:text-white"
+                  }`}
                 >
                   Right Foot
                 </button>
               </div>
               <label
                 htmlFor="video-upload"
-                className={`cursor-pointer inline-flex items-center gap-2 ${isLoading ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"} text-white px-4 py-2 rounded-lg transition-colors`}
+                className={`cursor-pointer inline-flex items-center gap-2 ${
+                  isLoading ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"
+                } text-white px-4 py-2 rounded-lg transition-colors`}
               >
                 <Upload className="w-4 h-4" />
                 <span>{isLoading ? "Loading..." : "Upload Video"}</span>

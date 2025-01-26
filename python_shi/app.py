@@ -8,8 +8,10 @@ from getAngles import getFrame
 from coach_rec import generate_advice
 import base64
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Directory to save uploaded videos
 UPLOAD_FOLDER = 'og_vids'
