@@ -15,6 +15,11 @@ interface AnalysisResponse {
   advice: Recommendation[];
   score: number;
   video: string; // base64-encoded string
+  knee_angle: number;
+  ankle_angle: number;
+  plant_knee_angle: number;
+  plant_ankle_angle: number;
+  body_straight_angle: number;
 }
 
 
