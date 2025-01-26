@@ -6,6 +6,9 @@ from io import StringIO
 import generate
 from getAngles import getFrame
 from coach_rec import generate_advice
+import base64
+import json
+
 app = Flask(__name__)
 
 # Directory to save uploaded videos
@@ -34,9 +37,14 @@ def get_ball():
 
         print('worked until here 2')
         advice = generate_advice(knee_angle=knee_angle, ankle_angle=ankle_angle, plant_knee_angle=plant_knee_angle, plant_ankle_angle=plant_ankle_angle, body_straight_angle=body_straight_angle)
-        
+
         print(advice, 'advice')
-        return jsonify({'score': score, 'advice': advice})
+        video_path = 'new_vids/processed_output.mp4'
+        with open(video_path, 'rb') as video_file:
+            encoded_video = base64.b64encode(video_file.read()).decode('utf-8')
+        advice_json = json.loads(advice)
+        
+        return jsonify({'score': score, 'advice': advice_json, 'video': encoded_video})
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
