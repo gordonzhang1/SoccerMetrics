@@ -79,7 +79,7 @@ def getAngles(video_path, frame, rightFoot):
     LEFT_ELBOW, LEFT_WRIST = 13, 15
     RIGHT_ELBOW, RIGHT_WRIST = 14, 16
 
-    if rightFoot:
+    if rightFoot == "right":
         kickingHip, kickingKnee, kickingAnkle, kickingToe = RIGHT_HIP, RIGHT_KNEE, RIGHT_ANKLE, RIGHT_TOE
         plantHip, plantKnee, plantAnkle, plantToe = LEFT_HIP, LEFT_KNEE, LEFT_ANKLE, LEFT_TOE
         elbow, wrist = RIGHT_ELBOW, RIGHT_WRIST
@@ -127,7 +127,7 @@ def getAngles(video_path, frame, rightFoot):
 
     score = getScore(knee_angle, ankle_angle, body_straight_angle, plant_knee_angle, plant_ankle_angle)
     return knee_angle, ankle_angle, plant_knee_angle, plant_ankle_angle, body_straight_angle, score
-    
+
 
 
 
