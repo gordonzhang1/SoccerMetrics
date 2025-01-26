@@ -55,9 +55,7 @@
   <a href="https://github.com/gordonzhang1/ShakespeareAI">
     <img src="https://www.gordonzhang.ca/assets/WhaleBeing-CMRDC8OQ.png" alt="Logo" width="1000" height="auto">
   </a>
-  <p>  Up to 20,000 whales per year are killed by ships globally, posing a significant threat to already vulnerable whale populations. The issue of ship strikes is not only an tragedy for marine ecosystems but also an avoidable one: in many cases, reducing ship speeds and rerouting to avoid high-risk areas comes at little to no cost to ship operators.
-
-To change this tragedy, we built WhaleBeing. 
+  <p>  SoccerMetrics is a 
 </p>
 
 
@@ -80,14 +78,16 @@ This calculation is pivotal in assessing the risk of ship strikes and supports p
 * [![Flask][Flask]][Flask-url]
 * [![NumPy][NumPy]][NumPy-url]
 * [![Pandas][Pandas]][Pandas-url]
-* [![TailwindCSS][TailwindCSS]][TailwindCSS-url]
+* [![TypeScript][TypeScript]][TypeScript-url]
+* [![OpenCV][OpenCV]][OpenCV-url]
+* [![MediaPipe][MediaPipe]][MediaPipe-url]
 
 
 
 
 
 ### Deployed With
-* [![Azure][Azure]][Azure-url]
+* [![Google Cloud][GoogleCloud]][GoogleCloud-url]
 * [![Vercel][Vercel]][Vercel-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -228,5 +228,12 @@ Project Link: [https://github.com/gordonzhang1/WhaleBeing](https://github.com/go
 [TailwindCSS]: https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white
 [TailwindCSS-url]: https://tailwindcss.com/
 
+[OpenCV]: https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white
+[OpenCV-url]: https://opencv.org/
+[MediaPipe]: https://img.shields.io/badge/MediaPipe-FF6F00?style=for-the-badge&logo=google&logoColor=white
+[MediaPipe-url]: https://mediapipe.dev/
+[GoogleCloud]: https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white
+[GoogleCloud-url]: https://cloud.google.com/
 
-
+[TypeScript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
