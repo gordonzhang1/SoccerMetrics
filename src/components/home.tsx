@@ -64,20 +64,17 @@ const Home: React.FC = () => {
     {
       id: "1",
       title: "",
-      description:
-        "",
+      description: "",
     },
     {
       id: "2",
       title: "",
-      description:
-        "",
+      description: "",
     },
     {
       id: "3",
       title: "",
-      description:
-        "",
+      description: "",
     },
   ]);
 
@@ -109,12 +106,15 @@ const Home: React.FC = () => {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("rightFoot", selectedFoot.toString());
-      console.log(selectedFoot, 'selected foot')
+      console.log(selectedFoot, "selected foot");
       // Send to backend API
-      const response = await fetch("http://127.0.0.1:5000/get_stuff", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://soccermetricsbackend.onrender.com/get_stuff",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to analyze video");
@@ -230,9 +230,17 @@ const Home: React.FC = () => {
       </div>
 
       {/* Analysis sidebar */}
-      <AnalysisSidebar score={score} recommendations={recommendations} kneeAngle={kneeAngle} ankleAngle={ankleAngle} plantAnkleAngle={plantAnkleAngle} plantKneeAngle={plantKneeAngle} bodyStraightAngle={bodyStraightAngle}/>
+      <AnalysisSidebar
+        score={score}
+        recommendations={recommendations}
+        kneeAngle={kneeAngle}
+        ankleAngle={ankleAngle}
+        plantAnkleAngle={plantAnkleAngle}
+        plantKneeAngle={plantKneeAngle}
+        bodyStraightAngle={bodyStraightAngle}
+      />
     </div>
-  ); 
+  );
 };
 
 export default Home;
