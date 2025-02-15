@@ -33,8 +33,6 @@
     <br />
     <a href="https://www.youtube.com/watch?v=Ng-EbAInbGE" target="_blank"><strong>View Demo »</strong></a>
     <br />
-    <br />
-    <a href="https://soccer-metrics-eentv5epz-gordonzhang1s-projects.vercel.app/">Visit Website</a>
 
   </p>
 </div>
